@@ -10,10 +10,6 @@ on:
         description: "Specify Node.js version (e.g., '18', '20', 'lts/*')"
         required: false
         default: "24"
-      script:
-        description: "Specify the npm/yarn script to run if available"
-        required: false
-        default: "npm run test"
 
 permissions:
   contents: read
@@ -29,4 +25,3 @@ jobs:
     with:
       tag: "${{ github.event.inputs.tag }}"
       node_version: ${{ inputs.node_version || '24' }}
-      script: ${{ inputs.script || 'npm run test' }}
