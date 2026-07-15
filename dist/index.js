@@ -36454,7 +36454,7 @@ class DopplerApiError extends Error {
  * Determines if a network error should be retried
  */
 function shouldRetry(error) {
-  if (!error instanceof DopplerApiError) {
+  if (!(error instanceof DopplerApiError)) {
     return false;
   }
   const { statusCode, contentType } = error;
@@ -36574,7 +36574,7 @@ async function _oidcAuth(identityId, oidcToken, apiDomain) {
             "user-agent": userAgent,
             "accepts": "application/json",
             "Content-Type": "application/json",
-            "Content-Length": body.length,
+            "Content-Length": Buffer.byteLength(body),
           },
           method: 'POST'
         },
